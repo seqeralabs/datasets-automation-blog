@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Lambda",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "lambda.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+      },
+      {
+        "Sid": "LocalTestingViaAssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::YOUR_AWS_ACCOUNT_NUMBER:root"
+        },
+        "Action": "sts:AssumeRole",
+        "Condition": {}
+      }
+    ]
+  }

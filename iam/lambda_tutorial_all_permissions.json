@@ -1,0 +1,82 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "SSMPrivileges",
+            "Effect": "Allow",
+            "Action": [
+                "ssm:Describe*",
+                "ssm:Get*",
+                "ssm:List*"
+            ],
+            "Resource": [
+                "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_NUMBER:parameter/lambda_tutorial/workspace_id",
+                "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_NUMBER:parameter/lambda_tutorial/s3_root_prefix",
+                "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_NUMBER:parameter/lambda_tutorial/samplesheet_file_types",
+                "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_NUMBER:parameter/lambda_tutorial/logging_level",
+                "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_NUMBER:parameter/lambda_tutorial/target_pipeline_name",
+                "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_NUMBER:parameter/lambda_tutorial/tower_api_endpoint"
+            ]
+        },
+        {
+            "Sid": "SecretsManager01",
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:GetResourcePolicy",
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "SecretsManager02",
+            "Effect": "Allow",
+            "Action": "secretsmanager:ListSecrets",
+            "Resource": "*"
+        },
+        {
+            "Sid": "BucketPolicy01",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::YOUR_S3_BUCKET"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "s3:prefix": [
+                        "lambda_tutorial/*"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "BucketPolicy02",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": [
+                "arn:aws:s3:::YOUR_S3_BUCKET/lambda_tutorial/*"
+            ]
+        },
+        {
+            "Sid": "CloudWatchPermissions",
+            "Effect": "Allow",
+            "Action": [
+              "logs:CreateLogGroup",
+              "logs:CreateLogStream",
+              "logs:PutLogEvents",
+              "logs:DescribeLogStreams"
+          ],
+            "Resource": [
+              "arn:aws:logs:*:*:*"
+          ]
+        }
+    ]
+}
