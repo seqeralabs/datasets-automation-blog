@@ -2,12 +2,18 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "SSMPrivileges",
+            "Sid": "SSMPrivileges01",
             "Effect": "Allow",
             "Action": [
-                "ssm:Describe*",
-                "ssm:Get*",
-                "ssm:List*"
+                "ssm:DescribeParameters"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "SSMPrivileges02",
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetParameter"
             ],
             "Resource": [
                 "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_NUMBER:parameter/lambda_tutorial/workspace_id",
@@ -28,7 +34,7 @@
                 "secretsmanager:ListSecretVersionIds"
             ],
             "Resource": [
-                "*"
+                "arn:aws:secretsmanager:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT:secret:lambda_tutorial/tower_PAT-*"
             ]
         },
         {
