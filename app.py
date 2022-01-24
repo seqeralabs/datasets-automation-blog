@@ -101,7 +101,7 @@ def generate_session(execution_role=None):
 
 def get_parameters(session=None, params_to_retrieve=None):
     '''
-        Pipeline-related values like workspace_id and pipelineid need to be available so that the
+        Pipeline-related values like workspace ID and pipeline name need to be available so that the
         tower cli creates a Dataset in the right Workspace and invokes the correct pipeline.
         Externalize these in AWS SSM so they can be changed without requiring modification of the
         underlying image or Lambda function code.
@@ -403,7 +403,7 @@ def invoke_tw_cli(command=None, errorstring=None, retry_transaction=None):
         Generic function to invoke subprocess calls to tw cli.
         Invoking functions must pass:
             1) Tokenized command (to facilitate use of python `subprocess` module),
-            2) Error string to for logging purposes in event of failure.
+            2) Error string for logging purposes in event of failure.
         NOTE: Function must convert the string-represented JSON returned  by tw to a dictionary for use by Python.
     '''
     try:
@@ -439,7 +439,7 @@ def log_error_and_raise_exception(errorstring=None, e=None, retry_transaction=Tr
             1) Actual programming exception which was not properly handled.
             2) Deliberate invocation when evaluation logic determines the event is OOS and should be ignored.
 
-        Lambda retry logic is powerful and we want to keep it handle event like networking hiccups that could 
+        Lambda retry logic is powerful and we want to leverage it for handling event like networking hiccups that could 
         cause a transaction to fail, but we don't want to retry events that we failed on purpose (e.g. because
         the file type was wrong and indicated the file was not a sample sheet).
         
