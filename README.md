@@ -12,7 +12,7 @@ To run this code on your local machine, do the following:
 
     `$ git clone https://github.com/seqeralabs/datasets-automation-blog.git`
 
-1. Instally [Python 3.9](https://www.python.org/downloads/).
+1. Install [Python 3.9](https://www.python.org/downloads/).
 
 1. Install [`docker`](https://docs.docker.com/get-docker/).
 
@@ -99,7 +99,9 @@ $ tree
 
 - The `datafiles` folder contains an example sample sheet for the [https://github.com/nf-core/rnaseq](https://github.com/nf-core/rnaseq) pipeline (_the pipeline used during the creation of this material_).
 
-- The `testing` folder contains sample S3 Put notification events that the AWS Lambda Service receives from S3. This can be used when testing locally and/or when testing in the Lambda Service.
+- The `testing` folder contains sample S3 Put notification events that the AWS Lambda Service receives from S3. This can be used when testing locally and/or when testing in the Lambda Service. 
+
+    - If you conduct tests with these file, be sure to replace `YOUR_AWS_REGION` and `YOUR_S3_BUCKET` with your own values. Also ensure that your positive test cases have a file in your corresponding S3 local so that the function can successfully retrieve it.
 
 - The `aws-lambda-rie-x86_64` and `entry_script.sh` files are used to allow your container to [emulate AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/images-test.html) while testing locally.
 
