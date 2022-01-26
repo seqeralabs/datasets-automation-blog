@@ -105,7 +105,7 @@ $ tree
 
 - The `app.py` file is the Python 3.9 code that will be executed by your Lambda function.<br>
 
-    While most parameters are externalized to supporting AWS Services, three values were hardcoded for ease of development:
+    While most parameters are externalized to supporting AWS Services, three values were hardcoded for ease of development. If you choose to use different names for your configuration items than directed, please ensure that you have updated them in the code as well.
 
     - `execution_role`<br> 
         The Role used by AWS Lambda to interact with other AWS Services. Set to _lambda_tutorial_.
