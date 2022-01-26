@@ -9,6 +9,7 @@ The material provided can be built as an [AWS Lambda-compatible container image]
 To run this code on your local machine, do the following: 
 
 1. Clone the repository.
+
     `$ git clone https://github.com/seqeralabs/datasets-automation-blog.git`
 
 1. Instally [Python 3.9](https://www.python.org/downloads/).
@@ -20,6 +21,7 @@ To run this code on your local machine, do the following:
 1. Configure the [`aws cli`](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 
 1. Build the Docker image.
+
     `$ docker build lambda_tutorial:v1.0 .`
 
 1. Run the container.
@@ -27,6 +29,7 @@ To run this code on your local machine, do the following:
     `$ docker run --rm -it -v ~/.aws:/root/.aws:ro -p 9000:8080 lambda_tutorial:v1.0`
 
 1. Send a transaction to the container.
+
     `$ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d @PATH_TO_YOUR_JSON_TEST_EVENT`
 
 **NOTE:** Transactions will receive error messages until you add the necessary configuration items to your AWS Account (_see below_).
@@ -34,7 +37,9 @@ To run this code on your local machine, do the following:
 
 # Required Configuration
 
-The provided code relies on the presence of specific artefacts in your AWS Account and Tower instance. Please see the [related blog](https://seqera-io-staging.netlify.app/blog/workflow-automation/#prepare-supporting-aws-services) for step-by-step instructions to create the following:
+The provided code relies on the presence of specific artefacts in your AWS Account and Tower instance.
+
+Please see the [related blog](https://seqera.io/blog/workflow-automation/#prepare-supporting-aws-services) for step-by-step instructions to create the following:
 
 1. AWS
     1. S3 Bucket
@@ -58,9 +63,9 @@ The provided code relies on the presence of specific artefacts in your AWS Accou
 
 # Deploying to AWS Lambda
 
-To deploy the code to the AWS Lambda Service, please see the [related blog](https://seqera-io-staging.netlify.app/blog/workflow-automation/#create-lambda-function-code-and-container) for step-by-step instructions.
+To deploy the code to the AWS Lambda Service, please see the [related blog](https://seqera.io/blog/workflow-automation/#create-lambda-function-code-and-container) for step-by-step instructions.
 
-**NOTE:** Do not deploy the image until you have a successful end-to-end local transaction. This requires successful creation of the container and associated configuration items in AWS and your Tower instance.
+**NOTE:** Do not deploy the image until you have created a local container and created all necessary configuration keys. 
 
 
 # Folder Structure
@@ -114,7 +119,7 @@ $ tree
 
 # Caveat
 
-This code was written to demonstrate the art of the possible for clients of Nextflow Tower. It has not yet been optimized for maximumize efficiency nor minimize unnecessary retries. 
+This code was written to demonstrate the art of the possible for clients of Nextflow Tower. It has not yet been optimized for maximum efficiency nor to minimize unnecessary retries. 
 
-Given that AWS Lambda [charges](https://aws.amazon.com/lambda/pricing/) for each MB of RAM on a per 1ms basis, and resulting pipeline invocations will incur charges with your batch computing provider, individuals are advised to conduct further testing and refinements before deployment to Production so as to minimize the risk of unexpected billing charges. 
+Given that AWS Lambda [charges](https://aws.amazon.com/lambda/pricing/) for each MB of RAM on a per 1ms basis, and resulting pipeline invocations will incur charges with your batch computing provider, individuals are advised to conduct further testing and refinements before deployment to Production so as to minimize the risk of unexpected billing. 
 
