@@ -1,4 +1,4 @@
-# datasets-automation-blog
+# Workflow and Datasets Automation Blog
 Repository for the code and configuration files referenced in the [Workflow Automation for Nextflow Tower Pipelines](https://seqera.io/blog/workflow-automation/) blog post.
 
 The material provided can be built as an [AWS Lambda-compatible container image](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) which can also be run on your local machine.
