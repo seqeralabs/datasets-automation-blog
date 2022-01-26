@@ -1,5 +1,5 @@
 # datasets-automation-blog
-Repository for the code and configuration files referenced in the [Workflow Automation for Nextflow Tower Pipelines] (https://seqera.io/blog/workflow-automation/) blog post.
+Repository for the code and configuration files referenced in the [Workflow Automation for Nextflow Tower Pipelines](https://seqera.io/blog/workflow-automation/) blog post.
 
 The material provided can be built as an [AWS Lambda-compatible container image](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) which can also be run on your local machine.
 
@@ -23,12 +23,13 @@ To run this code on your local machine, do the following:
     `$ docker build lambda_tutorial:v1.0 .`
 
 1. Run the container.
+
     `$ docker run --rm -it -v ~/.aws:/root/.aws:ro -p 9000:8080 lambda_tutorial:v1.0`
 
 1. Send a transaction to the container.
     `$ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d @PATH_TO_YOUR_JSON_TEST_EVENT`
 
-**NOTE:** Transactions will receive error messages until you add the necessary configuration items to your AWS Accout (_see below_).
+**NOTE:** Transactions will receive error messages until you add the necessary configuration items to your AWS Account (_see below_).
 
 
 # Required Configuration
