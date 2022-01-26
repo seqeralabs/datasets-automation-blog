@@ -22,7 +22,7 @@ To run this code on your local machine, do the following:
 
 1. Build the Docker image.
 
-    `$ docker build lambda_tutorial:v1.0 .`
+    `$ docker build --tag lambda_tutorial:v1.0 .`
 
 1. Run the container.
 
