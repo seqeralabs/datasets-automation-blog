@@ -8,27 +8,27 @@ The material provided can be built as an [AWS Lambda-compatible container image]
 
 To run this code on your local machine, do the following: 
 
-1. Clone the repository.
+1. Clone the repository
 
     `$ git clone https://github.com/seqeralabs/datasets-automation-blog.git`
 
-1. Install [Python 3.9](https://www.python.org/downloads/).
+1. Install [Python 3.9](https://www.python.org/downloads/)
 
-1. Install [`docker`](https://docs.docker.com/get-docker/).
+1. Install [`docker`](https://docs.docker.com/get-docker/)
 
-1. Install the [`aws cli`](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+1. Install the [`aws cli`](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-1. Configure the [`aws cli`](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
+1. Configure the [`aws cli`](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
-1. Build the Docker image.
+1. Build the Docker image
 
     `$ docker build --tag lambda_tutorial:v1.0 .`
 
-1. Run the container.
+1. Run the container
 
     `$ docker run --rm -it -v ~/.aws:/root/.aws:ro -p 9000:8080 lambda_tutorial:v1.0`
 
-1. Send a transaction to the container.
+1. Send a transaction to the container
 
     `$ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d @PATH_TO_YOUR_JSON_TEST_EVENT`
 
