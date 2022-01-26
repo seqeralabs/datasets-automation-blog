@@ -34,7 +34,7 @@
                 "secretsmanager:ListSecretVersionIds"
             ],
             "Resource": [
-                "arn:aws:secretsmanager:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT:secret:lambda_tutorial/tower_PAT-*"
+                "arn:aws:secretsmanager:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_NUMBER:secret:lambda_tutorial/tower_PAT-*"
             ]
         },
         {
