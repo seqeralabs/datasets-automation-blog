@@ -1,16 +1,9 @@
-FROM debian:stable-slim
+FROM python:3.9-slim-buster
 
 ARG LAMBDA_TASK_ROOT=/var/task
 
-RUN apt-get update && apt-get upgrade && \
-    apt-get install --no-install-recommends --yes \
-        python3.9 \ 
-        python3-pip \
-        wget \
-        ca-certificates && \
-    # Make the python3.9 executable available via python3
-    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 && \
-    # Retrieve the tw CLI and make it executable
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install --no-install-recommends --yes wget ca-certificates && \
     wget https://github.com/seqeralabs/tower-cli/releases/download/v0.5/tw-0.5-linux-x86_64 && \
     chmod +x ./tw-0.5-linux-x86_64 && \
     mv ./tw-0.5-linux-x86_64 /usr/local/bin/tw && \
