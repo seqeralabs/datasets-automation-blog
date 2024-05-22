@@ -4,9 +4,9 @@ ARG LAMBDA_TASK_ROOT=/var/task
 
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install --no-install-recommends --yes wget ca-certificates && \
-    wget https://github.com/seqeralabs/tower-cli/releases/download/v0.5/tw-0.5-linux-x86_64 && \
-    chmod +x ./tw-0.5-linux-x86_64 && \
-    mv ./tw-0.5-linux-x86_64 /usr/local/bin/tw && \
+    wget https://github.com/seqeralabs/tower-cli/releases/download/v0.9.2/tw-linux-x86_64 && \
+    chmod +x ./tw-linux-x86_64 && \
+    mv ./tw-linux-x86_64 /usr/local/bin/tw && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR ${LAMBDA_TASK_ROOT}
