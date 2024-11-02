@@ -1,9 +1,10 @@
-FROM python:3.9-slim-buster
+FROM python:3.9
 
 ARG LAMBDA_TASK_ROOT=/var/task
 
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install --no-install-recommends --yes wget ca-certificates && \
+RUN apt-get update && apt-get upgrade -y
+
+RUN apt-get install --no-install-recommends --yes wget python3-pip ca-certificates && \
     wget https://github.com/seqeralabs/tower-cli/releases/download/v0.5/tw-0.5-linux-x86_64 && \
     chmod +x ./tw-0.5-linux-x86_64 && \
     mv ./tw-0.5-linux-x86_64 /usr/local/bin/tw && \
