@@ -2,7 +2,9 @@
 
 # Reference: https://docs.aws.amazon.com/lambda/latest/dg/images-test.html
 if [ -z "${AWS_LAMBDA_RUNTIME_API}" ]; then
-  exec /usr/local/bin/aws-lambda-rie-x86_64 /usr/bin/python3 -m awslambdaric "$@"
+  echo '---AWS_LAMBDA_RUNTIME_API not found'
+  exec /usr/local/bin/aws-lambda-rie-x86_64 python3 -m awslambdaric "$@"
 else
-  exec /usr/bin/python3 -m awslambdaric "$@"
+  echo '+++AWS_LAMBDA_RUNTIME_API found'
+  exec python3 -m awslambdaric "$@"
 fi
