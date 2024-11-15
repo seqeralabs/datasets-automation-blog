@@ -9,6 +9,12 @@ Anyone implementing now (_circa early November 2024_) should - at the very least
 
 
 ## CHANGES
+- Nov 15, 2024: Modified Dockerfile solution so that resulting image is ~175MB rather than original ~1.5GB. Solution resides in branch `gwright99/smaller-docker-image`. New solution works as follows:
+
+    1. Uses two-stage `Dockerfile`.
+    2. Uses `pyinstaller` to convert Python solution to native single-file executable.
+    3. Modifies `awslambdaric` package so that it directly calls handler within single-file executable.
+
 - Nov 2, 2024: Modified `Dockerfile` and `entry_script.sh` to implement a true fix for the problem that the May 8/24 fix attempted to solve. [PR #7](https://github.com/seqeralabs/datasets-automation-blog/pull/7)
 
 - Nov 2, 2024: Modified `s3key` string-splitting logic to accommodate more complex S3 prefixes. [PR #6](https://github.com/seqeralabs/datasets-automation-blog/pull/6)
